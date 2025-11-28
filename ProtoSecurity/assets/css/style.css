@@ -1,0 +1,217 @@
+/* ======================================================== */
+/* 0. VARIABLES CSS (Colores de Marca)                      */
+/* ======================================================== */
+:root {
+    /* Color Principal (Autoridad): Azul Marino (#223367) */
+    --anvic-color-primary: #223367;
+    /* Color Acento (Alerta/CTA): Amarillo Brillante (#fff32b) */
+    --anvic-color-accent: #fff32b;
+    --anvic-color-accent2: #54a0ff; /* Nuevo color Aciano/Cielo */
+    /* Color de texto para fondo oscuro */
+    --anvic-color-light: #ffffff; 
+    /* Max Width del Contenedor */
+    --anvic-max-width: 1200px;
+}
+
+/* ======================================================== */
+/* 1. ESTILOS BASE Y UTILITIES                              */
+/* ======================================================== */
+
+/* Implementación de Scroll Suave para navegación interna (UX) */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Limitación del ancho del contenedor principal (máx. 1200px) */
+.anvic-container-max {
+    max-width: var(--anvic-max-width);
+}
+
+/* Clases de utilidad para colores de marca */
+.anvic-bg-primary {
+    background-color: var(--anvic-color-primary) !important;
+}
+
+.anvic-text-primary {
+    color: var(--anvic-color-primary) !important;
+}
+
+/* Estilo para los enlaces con color de acento */
+.anvic-link-accent {
+    color: var(--anvic-color-accent2);
+    transition: color 0.3s ease;
+}
+/* Estados :hover/:focus visibles (Requerido) */
+.anvic-link-accent:hover,
+.anvic-link-accent:focus {
+    color: #ffda00; /* Un amarillo ligeramente más oscuro para el feedback */
+}
+
+/* Estilo para enlaces claros en fondos oscuros */
+.anvic-link-light {
+    color: var(--anvic-color-light);
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+/* Estados :hover/:focus visibles */
+.anvic-link-light:hover,
+.anvic-link-light:focus {
+    color: var(--anvic-color-accent); /* Usa el acento para el hover */
+}
+
+
+/* ======================================================== */
+/* 2. ESTILOS DEL HEADER Y NAV                              */
+/* ======================================================== */
+
+.navbar {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+/* Personalización de los enlaces de navegación */
+.navbar-nav .nav-link {
+    color: var(--anvic-color-light) !important;
+    font-weight: 500;
+    margin-left: 1rem;
+    padding: 0.5rem 0; 
+    /*border-bottom: px solid transparent; */
+    transition: border-bottom 0.3s ease, color 0.3s ease;
+}
+
+/* Efecto Hover en NAV (usa el color acento) */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--anvic-color-accent) !important;
+    border-bottom: 2px solid var(--anvic-color-accent);
+}
+
+/* Estilo para el enlace CTA en el NAV (Opción 1: Azul Marino con Borde Amarillo) */
+.anvic-cta-link {
+    /* Fondo Azul Marino (Color Primario) */
+    background-color: var(--anvic-color-primary) !important; 
+    /* Letras Blancas (Para que se vea bien en fondo azul) */
+    color: var(--anvic-color-light) !important; 
+    padding: 0.5rem 1rem !important;
+    border-radius: 1.5rem;
+    font-weight: bold !important;
+    /* Borde sutil del color acento */
+    border: 2px solid var(--anvic-color-accent); /* Borde inicial amarillo sutil */
+    transition: all 0.3s ease;
+}
+/* Hover para el enlace CTA */
+.anvic-cta-link:hover {
+    /* Al hacer hover, se mantiene el color, pero el borde se hace más grueso */
+    background-color: #17254d; /* Un tono más oscuro de azul para el hover */
+    border-color: var(--anvic-color-accent);
+    box-shadow: 0 0 0 3px var(--anvic-color-accent); /* Efecto de brillo/sombra alrededor del borde */
+}
+
+
+/* ======================================================== */
+/* 3. HERO SECTION (Estilo Cinemático)                      */
+/* ======================================================== */
+
+/* Estilo para el Hero de la Página de Inicio */
+.anvic-hero-bg {
+    /* 1. Fondo de Imagen con cover */
+    background: url('../img/anvic_14.jpg') no-repeat center center;
+    background-size: cover;
+    min-height: 80vh; 
+    position: relative;
+    z-index: 1; 
+    padding: 100px 0; 
+}
+
+/* 2. Overlay Oscuro (70% de opacidad de Azul Marino) */
+.anvic-hero-bg::before,
+.anvic-page-hero::before { /* Aplica el overlay a heroes internos también */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Color Principal con 70% de opacidad */
+    background-color: rgba(34, 51, 103, 0.7); 
+    z-index: -1; 
+}
+
+/* Sombra de texto para el H1 (Hiperrealismo Corporativo) */
+.anvic-h1-shadow {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo para el botón CTA principal (Amarillo Brillante) */
+.anvic-cta-btn {
+    background-color: var(--anvic-color-accent);
+    color: var(--anvic-color-primary) !important; 
+    border: none;
+    transition: all 0.3s ease;
+    padding: 0.75rem 2rem;
+}
+/* Efecto hover en el CTA */
+.anvic-cta-btn:hover {
+    background-color: #ffda00; 
+    transform: scale(1.05); 
+}
+
+/* ======================================================== */
+/* 4. ESTILOS DE PÁGINAS INTERNAS (HERO, CARDS, FORMULARIOS)*/
+/* ======================================================== */
+
+/* Estilo para los Hero de Páginas Internas */
+.anvic-page-hero {
+    background: no-repeat center center;
+    background-size: cover;
+    min-height: 40vh; 
+    position: relative;
+    z-index: 1; 
+    padding: 60px 0; 
+}
+
+/* Estilo para los iconos SVG inline (ej. en Quiénes Somos) */
+.anvic-svg-icon {
+    fill: var(--anvic-color-primary); /* Rellena el SVG con el color primario */
+}
+
+/* Efecto Hover en Tarjetas (cctv.html) - UX/UI */
+.anvic-card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid transparent;
+}
+.anvic-card-hover:hover {
+    /* Usar el color acento para el borde y un ligero levantamiento */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 0 0 3px var(--anvic-color-accent);
+}
+
+/* Estilo para el botón de formulario (igual al CTA, pero oscuro) */
+.anvic-cta-btn-form {
+    background-color: var(--anvic-color-primary) !important;
+    border: 1px solid var(--anvic-color-primary);
+    transition: all 0.3s ease;
+}
+
+.anvic-cta-btn-form:hover {
+    background-color: #17254d !important; /* Tono de azul más oscuro */
+    box-shadow: 0 0 0 3px var(--anvic-color-accent); /* Borde con color acento */
+}
+
+
+/* ======================================================== */
+/* 5. COPYRIGHT FLOTANTE (@betograf_inc)                    */
+/* ======================================================== */
+
+.anvic-betograf-copyright {
+    position: fixed; 
+    bottom: 5px;
+    left: 5px;
+    color: rgba(255, 255, 255, 0.4); 
+    font-size: 0.7rem;
+    z-index: 1000; 
+    pointer-events: none; 
+    background-color: rgba(0, 0, 0, 0.1); 
+    padding: 2px 5px;
+    border-radius: 3px;
+}
